@@ -17,7 +17,13 @@ export function PageHeader({
         {eyebrow ? (
           <p className="text-xs font-medium tracking-[0.16em] text-indigo uppercase">{eyebrow}</p>
         ) : null}
-        <h1 className="text-3xl font-semibold tracking-tight text-balance">{title}</h1>
+        <h1
+          id="page-title"
+          tabIndex={-1}
+          className="text-3xl font-semibold tracking-tight text-balance focus:outline-none focus:ring-[3px] focus:ring-ring/50"
+        >
+          {title}
+        </h1>
         {description ? (
           <p className="text-sm leading-relaxed text-muted-foreground md:text-base">{description}</p>
         ) : null}

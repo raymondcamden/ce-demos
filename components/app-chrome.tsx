@@ -3,7 +3,7 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useRef, useState, useTransition } from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
 import {
   FileText,
   Inbox,
@@ -42,8 +42,19 @@ export function AppChrome({
   const router = useRouter();
   const [, startTransition] = useTransition();
   const searchTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const previousPathname = useRef(pathname);
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
+
+  useEffect(() => {
+    if (previousPathname.current === pathname) {
+      return;
+    }
+    previousPathname.current = pathname;
+    if (document.activeElement === document.body) {
+      document.getElementById("page-title")?.focus();
+    }
+  }, [pathname]);
 
   function searchBook(next: string) {
     const trimmed = next.trim();
