@@ -22,16 +22,17 @@ export function NoticeBell({
   const [open, setOpen] = useState(false);
   const root = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
+  const openRef = useRef(false);
+  openRef.current = open;
 
   useEffect(() => {
     function onPointer(event: PointerEvent) {
       if (!root.current?.contains(event.target as Node)) setOpen(false);
     }
     function onKey(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        setOpen(false);
-        triggerRef.current?.focus();
-      }
+      if (event.key !== "Escape" || !openRef.current) return;
+      setOpen(false);
+      triggerRef.current?.focus();
     }
     document.addEventListener("pointerdown", onPointer);
     document.addEventListener("keydown", onKey);
