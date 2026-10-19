@@ -93,7 +93,12 @@ export function AppChrome({
       >
         <div className="flex h-full flex-col px-4 py-5">
           <div className="flex items-center justify-between">
-            <Link href="/" onClick={() => setOpen(false)} aria-label="Ledgerly home">
+            <Link
+              href="/"
+              onClick={() => setOpen(false)}
+              aria-label="Ledgerly home"
+              className="rounded-md outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50"
+            >
               <Wordmark />
             </Link>
             <button

@@ -46,7 +46,7 @@ export function NoticeBell({
       <button
         ref={triggerRef}
         type="button"
-        className="relative rounded-full p-2 text-muted-foreground hover:bg-muted hover:text-foreground"
+        className="relative rounded-full p-2 text-muted-foreground outline-none hover:bg-muted hover:text-foreground focus-visible:ring-[3px] focus-visible:ring-ring/50"
         aria-label="Open exceptions"
         aria-expanded={open}
         onClick={() => setOpen((value) => !value)}
