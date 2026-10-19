@@ -213,7 +213,9 @@ export function AppChrome({
             <ThemeToggle />
             <NoticeBell openDisputeCount={openDisputeCount} openDisputes={openDisputes} />
             <div
-              className="flex size-9 items-center justify-center rounded-full bg-indigo-soft text-xs font-semibold text-indigo"
+              tabIndex={0}
+              aria-label={`${DEMO_OPERATOR.name}, ${DEMO_OPERATOR.role}`}
+              className="flex size-9 items-center justify-center rounded-full bg-indigo-soft text-xs font-semibold text-indigo outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50"
               title={`${DEMO_OPERATOR.name} · ${DEMO_OPERATOR.role}`}
             >
               {DEMO_OPERATOR.initials}
