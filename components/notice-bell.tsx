@@ -21,13 +21,22 @@ export function NoticeBell({
 }) {
   const [open, setOpen] = useState(false);
   const root = useRef<HTMLDivElement>(null);
+  const button = useRef<HTMLButtonElement>(null);
+  const openRef = useRef(open);
+
+  useEffect(() => {
+    openRef.current = open;
+  });
 
   useEffect(() => {
     function onPointer(event: PointerEvent) {
       if (!root.current?.contains(event.target as Node)) setOpen(false);
     }
     function onKey(event: KeyboardEvent) {
-      if (event.key === "Escape") setOpen(false);
+      if (event.key !== "Escape" || !openRef.current) return;
+      // Focus must move before the panel unmounts, or it falls back to body.
+      button.current?.focus();
+      setOpen(false);
     }
     document.addEventListener("pointerdown", onPointer);
     document.addEventListener("keydown", onKey);
@@ -40,6 +49,7 @@ export function NoticeBell({
   return (
     <div ref={root} className="relative">
       <button
+        ref={button}
         type="button"
         className="relative rounded-full p-2 text-muted-foreground hover:bg-muted hover:text-foreground"
         aria-label="Open exceptions"
