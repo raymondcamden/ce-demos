@@ -69,10 +69,13 @@ export function InvoiceTable({ invoices }: { invoices: InvoiceRow[] }) {
               <InvoiceStatusBadge status={displayInvoiceStatus(invoice)} />
             </TableCell>
             <TableCell>
+              {/* Icon duplicates the row's INV link, so it stays clickable but out of tab order. */}
               <Link
                 href={`/invoices/${invoice.id}`}
                 className="inline-flex size-8 items-center justify-center rounded-md text-muted-foreground hover:bg-muted hover:text-foreground"
                 aria-label={`Open ${invoice.number}`}
+                tabIndex={-1}
+                aria-hidden="true"
               >
                 <MoreHorizontal className="size-4" />
               </Link>

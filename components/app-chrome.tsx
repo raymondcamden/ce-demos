@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { NoticeBell, type OpenDisputeNotice } from "@/components/notice-bell";
 import { Wordmark } from "@/components/logo";
+import { RouteFocus } from "@/components/route-focus";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { DEMO_OPERATOR } from "@/lib/demo-session";
 import { cn } from "@/lib/utils";
@@ -68,6 +69,7 @@ export function AppChrome({
 
   return (
     <div className="min-h-full lg:grid lg:grid-cols-[240px_minmax(0,1fr)]">
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-lg focus:border focus:border-border focus:bg-card focus:px-3 focus:py-2 focus:text-sm focus:font-medium focus:text-foreground focus:ring-[3px] focus:ring-ring/20 focus:outline-none">Skip to content</a>
       <aside
         className={cn(
           "fixed inset-y-0 left-0 z-40 w-[240px] border-r border-border bg-sidebar transition-transform lg:static lg:translate-x-0",
@@ -198,7 +200,10 @@ export function AppChrome({
             </div>
           </div>
         </header>
-        <main className="flex-1 px-4 py-6 sm:px-6 lg:px-8">{children}</main>
+        <main id="main-content" tabIndex={-1} className="flex-1 px-4 py-6 sm:px-6 lg:px-8 outline-none">
+          <RouteFocus />
+          {children}
+        </main>
       </div>
     </div>
   );
