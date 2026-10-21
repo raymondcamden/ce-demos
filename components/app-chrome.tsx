@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { NoticeBell, type OpenDisputeNotice } from "@/components/notice-bell";
 import { Wordmark } from "@/components/logo";
+import { RouteFocus } from "@/components/route-focus";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { DEMO_OPERATOR } from "@/lib/demo-session";
 import { cn } from "@/lib/utils";
@@ -198,7 +199,10 @@ export function AppChrome({
             </div>
           </div>
         </header>
-        <main className="flex-1 px-4 py-6 sm:px-6 lg:px-8">{children}</main>
+        <main className="flex-1 px-4 py-6 sm:px-6 lg:px-8">
+          <RouteFocus />
+          {children}
+        </main>
       </div>
     </div>
   );
