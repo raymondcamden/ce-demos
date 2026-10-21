@@ -68,6 +68,12 @@ export function AppChrome({
 
   return (
     <div className="min-h-full lg:grid lg:grid-cols-[240px_minmax(0,1fr)]">
+      <a
+        href="#content"
+        className="sr-only rounded-lg border border-transparent bg-card px-3 py-2 text-sm font-medium text-foreground outline-none focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:border-ring focus:ring-[3px] focus:ring-ring/20"
+      >
+        Skip to content
+      </a>
       <aside
         className={cn(
           "fixed inset-y-0 left-0 z-40 w-[240px] border-r border-border bg-sidebar transition-transform lg:static lg:translate-x-0",
@@ -198,7 +204,7 @@ export function AppChrome({
             </div>
           </div>
         </header>
-        <main className="flex-1 px-4 py-6 sm:px-6 lg:px-8">{children}</main>
+        <main id="content" tabIndex={-1} className="flex-1 px-4 py-6 sm:px-6 lg:px-8">{children}</main>
       </div>
     </div>
   );
